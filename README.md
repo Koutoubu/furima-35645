@@ -11,7 +11,15 @@
 | firstname            | string | null: false              |
 | lastname2            | string | null: false              |
 | firstname2           | string | null: false              |
-| birthday             | string | null: false              |
+| birthday             | date   | null: false              |
+
+
+### Association
+
+- has_many :items
+- has_many :shared
+
+
 
 
 
@@ -20,24 +28,22 @@
 | Column             | Type       | Options                      |
 |--------------------|------------|------------------------------|
 | name               | string     | null: false                  |
-| price              | string     | null: false                  |
-| shippingmathod     | string     | null: false                  |
+| price              | integer    | null: false                  |
+| explanation        | text       | null: false                  |
 | seller             | string     | null: false                  |
-| category           | string     | null: false                  |
+| category_id        | integer    | null: false                  |
 | status             | string     | null: false                  |
 | paymentdestination | string     | null: false                  |
 | date               | string     | null: false                  |
 | user               | references | foreign_key: true null:false |
 
 
+### Association
 
-## ordersテーブル
+- has_many :shared
+- belongs_to :items
 
-| Column      | Type       | Options           |
-|-------------|------------|-------------------|
-| area        | string     | null: false       |
-| item        | references | foreign_key: true |
-| user        | references | foreign_key: true |
+
 
 
 
@@ -45,6 +51,33 @@
 
 | Column            | Type       | Options           |
 |-------------------|------------|-------------------|
-| paymentmethod     | string     | null: false       |
 | item              | references | foreign_key: true |
 | user              | references | foreign_key: true |
+
+
+### Association
+
+- has_many :orders
+- belongs_to :items
+- belongs_to :users
+
+
+
+
+
+## ordersテーブル
+
+| Column      | Type       | Options           |
+|-------------|------------|-------------------|
+| card        | integer    | null: false       |
+| deadline    | integer    | null: false       |
+| code        | integer    | null: false       |
+| area        | string     | null: false       |
+| number      | integer    | null: false       |
+| item        | references | foreign_key: true |
+| user        | references | foreign_key: true |
+
+
+### Association
+
+- belongs_to :shared
