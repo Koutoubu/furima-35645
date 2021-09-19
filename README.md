@@ -17,7 +17,7 @@
 ### Association
 
 - has_many :items
-- has_one :shared
+- has_many :shared
 
 
 
@@ -30,11 +30,11 @@
 | name               | string     | null: false                  |
 | price              | integer    | null: false                  |
 | explanation        | text       | null: false                  |
-| seller             | string     | null: false                  |
+| seller_id          | integer    | null: false                  |
 | category_id        | integer    | null: false                  |
-| status             | integer    | null: false                  |
-| area               | integer    | null: false                  |
-| date               | integer    | null: false                  |
+| status_id          | integer    | null: false                  |
+| area_id            | integer    | null: false                  |
+| date_id            | integer    | null: false                  |
 | user               | references | foreign_key: true null:false |
 
 
@@ -69,12 +69,12 @@
 
 | Column         | Type       | Options           |
 |----------------|------------|-------------------|
-| postal_number  | integer    | null: false       |
+| postal_number  | string     | null: false       |
 | prefectures    | string     | null: false       |
 | municipalities | string     | null: false       |
-| address        | integer    | null: false       |
-| buillding      | string     | null: false       |
-| tell_number    | integer    | null: false       |
+| address        | string     | null: false       |
+| building      | string     |                   |
+| tell_number    | string     | null: false       |
 | shared         | references | foreign_key: true |
 
 
