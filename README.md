@@ -17,7 +17,7 @@
 ### Association
 
 - has_many :items
-- has_many :shared
+- has_many :shares
 
 
 
@@ -70,10 +70,10 @@
 | Column         | Type       | Options           |
 |----------------|------------|-------------------|
 | postal_number  | string     | null: false       |
-| prefectures    | string     | null: false       |
+| area_id        | integer    | null: false       |
 | municipalities | string     | null: false       |
 | address        | string     | null: false       |
-| building      | string     |                   |
+| building       | string     |                   |
 | tell_number    | string     | null: false       |
 | shared         | references | foreign_key: true |
 
