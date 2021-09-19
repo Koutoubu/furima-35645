@@ -7,17 +7,17 @@
 | nickname             | string | null: false              |
 | email                | string | null: false unique: true |
 | encrypted_password   | string | null: false              |
-| lastname             | string | null: false              |
-| firstname            | string | null: false              |
-| lastname2            | string | null: false              |
-| firstname2           | string | null: false              |
+| last_name            | string | null: false              |
+| first_name           | string | null: false              |
+| last_name_KANA       | string | null: false              |
+| first_name_KANA      | string | null: false              |
 | birthday             | date   | null: false              |
 
 
 ### Association
 
 - has_many :items
-- has_many :shared
+- has_one :shared
 
 
 
@@ -32,16 +32,16 @@
 | explanation        | text       | null: false                  |
 | seller             | string     | null: false                  |
 | category_id        | integer    | null: false                  |
-| status             | string     | null: false                  |
-| paymentdestination | string     | null: false                  |
-| date               | string     | null: false                  |
+| status             | integer    | null: false                  |
+| area               | integer    | null: false                  |
+| date               | integer    | null: false                  |
 | user               | references | foreign_key: true null:false |
 
 
 ### Association
 
-- has_many :shared
-- belongs_to :items
+- has_one :shared
+- belongs_to :user
 
 
 
@@ -57,9 +57,9 @@
 
 ### Association
 
-- has_many :orders
-- belongs_to :items
-- belongs_to :users
+- has_one :orders
+- belongs_to :item
+- belongs_to :user
 
 
 
@@ -67,15 +67,15 @@
 
 ## ordersテーブル
 
-| Column      | Type       | Options           |
-|-------------|------------|-------------------|
-| card        | integer    | null: false       |
-| deadline    | integer    | null: false       |
-| code        | integer    | null: false       |
-| area        | string     | null: false       |
-| number      | integer    | null: false       |
-| item        | references | foreign_key: true |
-| user        | references | foreign_key: true |
+| Column         | Type       | Options           |
+|----------------|------------|-------------------|
+| postal_number  | integer    | null: false       |
+| prefectures    | string     | null: false       |
+| municipalities | string     | null: false       |
+| address        | integer    | null: false       |
+| buillding      | string     | null: false       |
+| tell_number    | integer    | null: false       |
+| shared         | references | foreign_key: true |
 
 
 ### Association
