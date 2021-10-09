@@ -3,7 +3,11 @@ class Item < ApplicationRecord
   has_one    :shared
   belongs_to :user
   has_one_attached :image
-  belongs_to :category_id, :status_id, :seller_id, :date_id
+  belongs_to :category
+  belongs_to :status
+  belongs_to :seller
+  belongs_to :date_id
+  belongs_to :area
 
   validates :name, presence: true
   validates :explanation, presence: true
