@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2021_10_07_113710) do
     t.integer "category_id", null: false
     t.integer "status_id", null: false
     t.integer "area_id", null: false
-    t.integer "date_id", null: false
+    t.integer "date_id_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
