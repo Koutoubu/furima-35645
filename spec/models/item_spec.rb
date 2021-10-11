@@ -76,7 +76,7 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Area must be other than 1')
       end
-      it 'date_id_idで---を選択すると登録できない' do
+      it 'date_idで---を選択すると登録できない' do
         @item.date_id_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include('Date id must be other than 1')
@@ -115,6 +115,11 @@ RSpec.describe Item, type: :model do
         @item.image = nil
         @item.valid?
         expect(@item.errors.full_messages).to include("Image can't be blank")
+      end
+      it 'ユーザーが紐付いていないと投稿できない' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
   end
