@@ -10,4 +10,4 @@ function itemPrice(){
     profit.innerHTML = Math.floor(inputValue - salesCommission)
   });
 }
-window.addEventListener('load', itemPrice);
+window.addEventListener('load', itemPrice); 
