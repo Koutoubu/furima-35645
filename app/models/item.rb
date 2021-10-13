@@ -1,18 +1,23 @@
-class SharedAddress
-  include ActiveModel::Model
-  attr_accessor :postal_number, :area_id, :municipalities, :address, :building, :tell_number, :token, :item_id, :user_id
+class Item < ApplicationRecord
 
-  validates :area_id, presence: true, numericality: {other_than: 1 }
-  validates :postal_number, null: false, format: {with: /\A[0-9]{3}-[0-9]{4}\z/ }
-  validates :municipalities, null: false
-  validates :address, null: false
-  validates :tell_number, null: false, numericality: { only_integer:true }, format: {with: /\A[0-9]{11}\z/ }
-  validates :token, null: false
-  validates :item_id, null: false
-  validates :user_id, null: false
+  has_one    :shared
+  belongs_to :user
+  has_one :shared
+  has_one_attached :image
 
-  def save
-    @shared = Shared.create!(item_id: item_id, user_id: user_id)
-    Order.create!(postal_number: postal_number, area_id: area_id, municipalities: municipalities, address: address, building: building, tell_number: tell_number, shared_id: @shared.id) 
-  end
+  
+  validates :name, presence: true
+  validates :explanation, presence: true
+  validates :image, presence: true
+  validates :category_id, :status_id, :seller_id, :area_id, :date_id_id, numericality: { other_than: 1 }
+  validates :price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999,
+    message: 'is invalid' }
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :category
+  belongs_to :status
+  belongs_to :seller
+  belongs_to :date_id
+  belongs_to :area
+
 end
