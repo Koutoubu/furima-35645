@@ -48,13 +48,13 @@ ActiveRecord::Schema.define(version: 2021_10_11_104329) do
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
-  create_table "sharedss", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "shareds", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "item_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_sharedss_on_item_id"
-    t.index ["user_id"], name: "index_sharedss_on_user_id"
+    t.index ["item_id"], name: "index_shareds_on_item_id"
+    t.index ["user_id"], name: "index_shareds_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -77,6 +77,6 @@ ActiveRecord::Schema.define(version: 2021_10_11_104329) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "items", "users"
-  add_foreign_key "sharedss", "items"
-  add_foreign_key "sharedss", "users"
+  add_foreign_key "shareds", "items"
+  add_foreign_key "shareds", "users"
 end
