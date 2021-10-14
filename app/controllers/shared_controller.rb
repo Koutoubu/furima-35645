@@ -1,4 +1,4 @@
-class PurchasesController < ApplicationController
+class SharedController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :define_item, only: [:index, :create] 
   before_action :move_to_index, only: [:index, :create]
@@ -13,7 +13,7 @@ class PurchasesController < ApplicationController
       if @shared_address.valid?
         Payjp.api_key = ENV["PAYJP_SECRET_KEY"]  
         Payjp::Charge.create(
-          amount: @item.price,  
+          amount: @item.price,
           card: shared_params[:token],    
           currency: 'jpy'                 
         )
