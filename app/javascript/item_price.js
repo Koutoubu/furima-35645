@@ -1,13 +1,10 @@
-function tax (){
-  const itemPrice  = document.getElementById("item-price");
-  itemPrice.addEventListener("keyup", () => {
-    const fee = itemPrice.value * 0.1;
-    const addTaxPrice = document.getElementById("add-tax-price");
-    addTaxPrice.innerHTML = `${fee}`;
-    const SalesProfit = itemPrice.value - fee ;
+window.addEventListener('load', () => {
+  const priceInput = document.getElementById("item-price");
+  priceInput.addEventListener("input", () => {
+    const inputValue = priceInput.value;
+    const addTaxDom = document.getElementById("add-tax-price");
+    addTaxDom.innerHTML = inputValue * 0.1
     const profit = document.getElementById("profit");
-    profit.innerHTML = `${SalesProfit}`;
-  });
-}
-
-window.addEventListener('load', tax);
+    profit.innerHTML = inputValue - addTaxDom.innerHTML
+  })
+});
